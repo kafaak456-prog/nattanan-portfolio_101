@@ -44,7 +44,7 @@ export default function Home() {
             <div className="relative w-40 h-40 md:w-48 md:h-48 mb-8 border border-zinc-800 p-2 group hover:border-cyan-500/50 transition-colors">
               <div className="w-full h-full relative overflow-hidden bg-zinc-950">
                 <Image
-                  src="/profile.jpg" 
+                  src="/Nattanan_Weerapong_Profile.jpg" 
                   alt="Nattanan Weerapong Profile"
                   fill
                   className="object-cover transition-all duration-700 ease-in-out"
