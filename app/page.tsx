@@ -105,7 +105,13 @@ export default function Home() {
   );
 }
 
-function DataPad({ label, value, sub }) {
+type DataPadProps = {
+  label: string
+  value: string
+  sub?: string
+}
+
+function DataPad({ label, value, sub }: DataPadProps) {
   return (
     <div className="group p-6 border border-zinc-800 bg-zinc-950/50 hover:border-cyan-500/50 transition-all cursor-pointer relative overflow-hidden">
       <div className="absolute top-0 left-0 w-1 h-full bg-cyan-900 group-hover:bg-cyan-500 transition-colors"></div>
