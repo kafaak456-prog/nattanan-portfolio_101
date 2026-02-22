@@ -41,7 +41,7 @@ export default function Home() {
             <div className="text-cyan-500 text-xs mb-8">{'>'} {text}<span className="animate-ping">_</span></div>
             
             {/* THIS IS THE NEW FUTURISTIC PHOTO FRAME */}
-            <div className="relative w-64 h-64 md:w-48 md:h-48 mb-8 border border-zinc-800 p-2 group hover:border-cyan-500/50 transition-colors">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mb-8 border border-zinc-800 p-2 group hover:border-cyan-500/50 transition-colors">
               <div className="w-full h-full relative overflow-hidden bg-zinc-950">
                 <Image
                   src="/Nattanan_Weerapong_Profile.jpg" 
