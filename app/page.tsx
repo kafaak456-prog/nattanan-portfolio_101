@@ -86,7 +86,7 @@ export default function Home() {
           <DataPad label="Academic Performance" value="GPA 3.989" sub="Institute Honors Scholar" />
           <DataPad label="Primary Language" value="Thai / English" sub="Bilingual Proficiency" />
           <DataPad label="Certification" value="Data Science" sub="Issued by Coursera (May 2023)" />
-          <DataPad label="Work Experience" value="Peer Tutor @ VMI (Feb 2025 - Present), Math Tutor (Aug 2024), Student Assistant @ CU Boulder (2022)" sub={undefined} />
+          <DataPad label="Work Experience" value="Math, Physics, and Chemistry Tutor @ VMI (Present), Library Assistant @ VMI (Present), Student Assistant @ CU Boulder (2022)" sub={undefined} />
         </div>
       </div>
 
