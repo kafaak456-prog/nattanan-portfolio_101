@@ -222,7 +222,7 @@ export default function Home() {
             <div className="mt-8">
               <div className="text-[10px] text-purple-500/70 uppercase tracking-widest mb-4">// tools & software</div>
               <div className="flex flex-wrap gap-2">
-                {["MATLAB", "Python", "SolidWorks", "LaTeX", "NumPy", "Pandas", "Git", "Next.js"].map(t => (
+                {["MATLAB", "Python", "SolidWorks", "Git", "Next.js", "Microsoft Office"].map(t => (
                   <span key={t} className="px-3 py-1.5 text-[11px] uppercase tracking-wider border border-purple-800/50 text-purple-300 bg-purple-950/30 hover:border-purple-400 transition-colors cursor-default">{t}</span>
                 ))}
               </div>
