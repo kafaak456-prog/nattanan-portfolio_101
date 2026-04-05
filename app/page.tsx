@@ -25,15 +25,15 @@ export default function Home() {
   }, [activeSection, barsAnimated]);
 
   const skills = [
-    { name: "Heat Transfer & Thermodynamics", pct: 95 },
-    { name: "Stress Analysis & FEM", pct: 88 },
-    { name: "MATLAB", pct: 92 },
-    { name: "Fluid Mechanics", pct: 85 },
-    { name: "Python & Data Science", pct: 78 },
-    { name: "Aerospace Systems", pct: 80 },
-    { name: "Nuclear Engineering", pct: 78 },
-    { name: "SolidWorks / CAD", pct: 72 },
-  ];
+  { name: "Controls & Dynamic Systems", pct: 95 },
+  { name: "Mechanical Design & CAD", pct: 92 },
+  { name: "Heat Transfer & Thermodynamics", pct: 90 },
+  { name: "Stress Analysis & FEM", pct: 91 },
+  { name: "MATLAB", pct: 95 },
+  { name: "Fluid Mechanics", pct: 91 },
+  { name: "Aerospace Systems", pct: 92 },
+  { name: "Nuclear Engineering", pct: 90 },
+];
 
   return (
     <main className="min-h-screen bg-[#080612] text-white font-mono selection:bg-purple-500/50 overflow-x-hidden">
