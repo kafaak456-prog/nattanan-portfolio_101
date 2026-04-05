@@ -190,7 +190,7 @@ export default function Home() {
               </InfoCard>
               <InfoCard title="// activities">
                 <div className="flex flex-wrap gap-2 mt-1">
-                  {["Aviation Club", "Heat Transfer Research", "FEM / FDM Methods", "AI in Engineering"].map(t => (
+                  {["Aviation Club", "Cyber Club"].map(t => (
                     <span key={t} className="px-3 py-1 text-[11px] uppercase tracking-wider border border-zinc-700/60 text-zinc-400 bg-zinc-900/40">{t}</span>
                   ))}
                 </div>
