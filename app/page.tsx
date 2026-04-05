@@ -301,12 +301,12 @@ export default function Home() {
                   <div className="text-sm text-zinc-100 group-hover:text-purple-300 transition-colors">weerapongn27@vmi.edu</div>
                 </div>
               </a>
-              <a href="https://nattanan-portfolio-101.vercel.app" target="_blank" rel="noopener noreferrer"
+              <a href="https://linkedin.com/in/nattanan-weerapong-b900a0275" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-4 p-5 border border-zinc-800 hover:border-purple-600/60 bg-zinc-950/50 transition-all group">
-                <div className="text-purple-400 text-xl w-8">⬡</div>
+                <div className="text-purple-400 text-xl w-8">in</div>
                 <div>
-                  <div className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Portfolio</div>
-                  <div className="text-sm text-zinc-100 group-hover:text-purple-300 transition-colors">nattanan-portfolio-101.vercel.app</div>
+                  <div className="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">LinkedIn</div>
+                  <div className="text-sm text-zinc-100 group-hover:text-purple-300 transition-colors">linkedin.com/in/nattanan-weerapong-b900a0275</div>
                 </div>
               </a>
               <a href="/Nattanan_Weerapong_Resume.pdf" download
