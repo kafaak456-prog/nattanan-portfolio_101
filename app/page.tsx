@@ -13,7 +13,6 @@ const SECTION_LABELS: Record<SectionId, string> = {
   contact: "Contact",
 };
 
-// ── Fade-in on scroll ──
 function FadeIn({
   children,
   delay = 0,
@@ -33,19 +32,17 @@ function FadeIn({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const translate =
-    from === "left" ? (visible ? "translate-x-0" : "-translate-x-4") : (visible ? "translate-y-0" : "translate-y-5");
+  const translate = from === "left"
+    ? (visible ? "translate-x-0" : "-translate-x-3")
+    : (visible ? "translate-y-0" : "translate-y-4");
 
   return (
     <div
@@ -85,52 +82,44 @@ export default function Home() {
   }, []);
 
   const scrollTo = (id: SectionId) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const proficient = [
-    "MATLAB",
     "Mechanical Design & CAD",
+    "Controls & Dynamic Systems",
     "Heat Transfer & Thermodynamics",
     "Stress Analysis & FEM",
-    "Controls & Dynamic Systems",
     "Fluid Mechanics",
+    "MATLAB",
   ];
-
   const familiar = ["Aerospace Systems", "Nuclear Engineering"];
 
   return (
-    <main className="min-h-screen bg-[#f4ecd8] text-[#1f1d18]">
+    <main className="min-h-screen bg-[#f7f3ec] text-[#1f1d18]">
 
       {/* NAV */}
-      <nav className="sticky top-0 z-20 bg-[#f4ecd8]/85 backdrop-blur-md border-b border-[#c9bd9f]/70">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 py-5 flex justify-between items-center">
+      <nav className="sticky top-0 z-20 bg-[#f7f3ec]/90 backdrop-blur-md border-b border-[#ddd5c0]">
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 py-4 flex justify-between items-center">
           <button
             onClick={() => scrollTo("home")}
-            className="font-[family-name:var(--font-display)] italic text-xl sm:text-2xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
+            className="font-[family-name:var(--font-display)] italic text-xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
           >
             Nattanan Weerapong
           </button>
-          <div className="hidden md:flex gap-7 text-[11px] tracking-[0.18em] uppercase">
+          <div className="hidden md:flex items-center gap-1">
             {SECTIONS.map((s) => (
-              <NavLink
-                key={s}
-                label={SECTION_LABELS[s]}
-                active={activeSection === s}
-                onClick={() => scrollTo(s)}
-              />
+              <NavLink key={s} label={SECTION_LABELS[s]} active={activeSection === s} onClick={() => scrollTo(s)} />
             ))}
           </div>
         </div>
-        {/* Mobile nav */}
-        <div className="md:hidden flex gap-5 px-6 pb-3 overflow-x-auto text-[10px] tracking-[0.18em] uppercase border-t border-[#c9bd9f]/50 pt-3">
+        <div className="md:hidden flex gap-1 px-4 pb-3 pt-2 overflow-x-auto">
           {SECTIONS.map((s) => (
             <button
               key={s}
               onClick={() => scrollTo(s)}
-              className={`whitespace-nowrap transition-colors duration-300 ${
-                activeSection === s ? "text-[#8b6f3b]" : "text-[#6b6557]"
+              className={`px-3 py-1 text-[10px] tracking-widest uppercase whitespace-nowrap transition-colors duration-200 ${
+                activeSection === s ? "bg-[#1f1d18] text-[#f7f3ec]" : "text-[#6b6557] hover:text-[#1f1d18]"
               }`}
             >
               {SECTION_LABELS[s]}
@@ -139,272 +128,277 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <div className="max-w-4xl mx-auto px-6 sm:px-10">
 
         {/* ── HOME ── */}
-        <section id="home" className="scroll-mt-32 pt-16 sm:pt-24 pb-24 sm:pb-32">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
-            <div className="md:col-span-7 order-2 md:order-1">
-              {/* Staggered hero entrance */}
+        <section id="home" className="scroll-mt-28 pt-20 sm:pt-28 pb-28 sm:pb-36">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
+
+            {/* Left: text */}
+            <div className="md:col-span-7 order-2 md:order-1 space-y-8">
               <div
-                className={`text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-6 transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                className={`text-[10px] tracking-[0.3em] uppercase text-[#8b6f3b] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
                 style={{ transitionDelay: "0ms" }}
               >
-                Virginia Military Institute · Cadet
+                Virginia Military Institute · Mechanical Engineering
               </div>
+
               <h1
-                className={`font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-8xl leading-[1.0] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                style={{ transitionDelay: "120ms" }}
+                className={`font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-[5.5rem] leading-[1.0] text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: "110ms" }}
               >
-                Nattanan
-                <br />
-                <span className="italic font-normal">Weerapong</span>
+                Nattanan<br />
+                <span className="italic font-normal text-[#4a4438]">Weerapong</span>
               </h1>
+
               <p
-                className={`mt-8 text-[15px] sm:text-base leading-relaxed text-[#3e3a32] max-w-xl transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                style={{ transitionDelay: "240ms" }}
+                className={`text-base leading-[1.8] text-[#5a5346] max-w-md transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: "220ms" }}
               >
-                International student from Thailand pursuing a B.S. in Mechanical
-                Engineering at Virginia Military Institute, with concentrations in
-                nuclear and aerospace engineering. Focused on using math and AI
-                to solve real engineering problems.
+                B.S. Mechanical Engineering student with concentrations in nuclear
+                and aerospace engineering. GPA 3.99 · Institute Honors Scholar.
               </p>
+
               <div
-                className={`mt-10 flex flex-wrap gap-x-8 gap-y-2 text-[13px] text-[#6b6557] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                style={{ transitionDelay: "340ms" }}
-              >
-                <DetailLine label="GPA" value="3.99" />
-                <DetailLine label="Honors" value="Institute Honors Scholar" />
-                <DetailLine label="Languages" value="Thai · English" />
-              </div>
-              <div
-                className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                style={{ transitionDelay: "440ms" }}
+                className={`flex flex-wrap gap-3 transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: "330ms" }}
               >
                 <a
                   href="/Nattanan_Weerapong_Resume.pdf"
-                  download="Nattanan_Weerapong_Resume.pdf"
-                  className="px-7 py-3 bg-[#1f1d18] text-[#f4ecd8] text-[11px] tracking-[0.22em] uppercase hover:bg-[#8b6f3b] active:scale-[0.97] transition-all duration-300"
+                  download
+                  className="px-6 py-2.5 bg-[#1f1d18] text-[#f7f3ec] text-[11px] tracking-[0.2em] uppercase hover:bg-[#8b6f3b] active:scale-95 transition-all duration-300"
                 >
-                  Download Resume
+                  Resume
                 </a>
                 <button
                   onClick={() => scrollTo("contact")}
-                  className="px-7 py-3 border border-[#1f1d18] text-[#1f1d18] text-[11px] tracking-[0.22em] uppercase hover:bg-[#1f1d18] hover:text-[#f4ecd8] active:scale-[0.97] transition-all duration-300"
+                  className="px-6 py-2.5 border border-[#c9b99a] text-[#5a5346] text-[11px] tracking-[0.2em] uppercase hover:border-[#1f1d18] hover:text-[#1f1d18] active:scale-95 transition-all duration-300"
                 >
-                  Contact
+                  Get in touch
                 </button>
               </div>
             </div>
 
-            {/* Photo */}
+            {/* Right: photo */}
             <div
-              className={`md:col-span-5 order-1 md:order-2 flex justify-center md:justify-end transition-all duration-1000 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: "200ms" }}
+              className={`md:col-span-5 order-1 md:order-2 flex justify-center md:justify-end transition-all duration-1000 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+              style={{ transitionDelay: "180ms" }}
             >
-              <div className="relative w-56 sm:w-64 md:w-full max-w-xs aspect-[3/4] bg-[#ede4cd] p-3 shadow-[0_8px_30px_-12px_rgba(31,29,24,0.25)] overflow-hidden group cursor-pointer">
-                <div className="w-full h-full relative overflow-hidden">
-                  <Image
-                    src="/Profile.PNG"
-                    alt="Nattanan Weerapong, VMI Cadet"
-                    fill
-                    sizes="(max-width: 768px) 256px, 320px"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                    priority
-                  />
-                </div>
-                {/* Subtle bronze vignette on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#8b6f3b]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="relative w-52 sm:w-60 md:w-full max-w-[260px] aspect-[3/4] overflow-hidden group shadow-[0_20px_60px_-15px_rgba(31,29,24,0.2)]">
+                <Image
+                  src="/Profile.PNG"
+                  alt="Nattanan Weerapong, VMI Cadet"
+                  fill
+                  sizes="(max-width: 768px) 240px, 260px"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1f1d18]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
+
           </div>
         </section>
 
-        <Divider />
-
         {/* ── ABOUT ── */}
         <Section id="about" title="About">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-            <FadeIn delay={100}>
-              <div className="space-y-5 text-[15px] leading-relaxed text-[#3e3a32]">
-                <p>
-                  Raised in Thailand and now studying at the Virginia Military Institute,
-                  I am pursuing a Bachelor of Science in Mechanical Engineering on the
-                  Institute Honors track. My academic focus lies at the intersection of
-                  nuclear and aerospace systems, with a continuing interest in the
-                  mathematics that underpins both.
-                </p>
-                <p>
-                  Outside of coursework, I serve as a tutor in mathematics, physics, and
-                  chemistry, and assist in the Institute library. I am drawn to research
-                  opportunities and collaborations that ask careful questions of
-                  real-world engineering problems.
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+            <FadeIn delay={80}>
+              <p className="text-[15px] leading-[1.85] text-[#5a5346]">
+                I'm an international student from Thailand studying Mechanical
+                Engineering at VMI on the Institute Honors track. My focus is on
+                nuclear and aerospace systems, with a strong interest in the
+                mathematics behind them. Outside class, I tutor STEM subjects and
+                work in the Institute library. I'm actively looking for research
+                roles and internships.
+              </p>
             </FadeIn>
-            <FadeIn delay={220}>
-              <DetailList
-                rows={[
+            <FadeIn delay={200}>
+              <dl className="space-y-0 divide-y divide-[#e5ddd0]">
+                {[
                   ["Origin", "Thailand"],
                   ["Institution", "Virginia Military Institute"],
                   ["Degree", "B.S. Mechanical Engineering"],
                   ["Concentrations", "Nuclear · Aerospace"],
                   ["Minors", "Mathematics · Physics"],
-                  ["Honor Societies", "Tau Beta Pi · Pi Tau Sigma"],
-                  ["Activities", "Aviation Club · Cyber Club"],
-                ]}
-              />
+                  ["Societies", "Tau Beta Pi · Pi Tau Sigma"],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex justify-between items-baseline py-3 group cursor-default">
+                    <dt className="text-[11px] tracking-widest uppercase text-[#9d8e7a] group-hover:text-[#8b6f3b] transition-colors duration-200">{k}</dt>
+                    <dd className="text-[13px] text-[#1f1d18] text-right group-hover:text-[#4a4438] transition-colors duration-200">{v}</dd>
+                  </div>
+                ))}
+              </dl>
             </FadeIn>
           </div>
         </Section>
 
-        <Divider />
-
-        {/* ── STUDIES ── */}
+        {/* ── SKILLS ── */}
         <Section id="studies" title="Skills">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+
+            {/* Proficient */}
             <div>
               <FadeIn>
-                <div className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-5">
-                  Proficient
-                </div>
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-6">Proficient</p>
               </FadeIn>
-              <ul className="space-y-2.5">
+              <ul className="divide-y divide-[#e5ddd0]">
                 {proficient.map((item, i) => (
-                  <FadeIn key={item} delay={i * 70}>
-                    <li className="text-lg sm:text-xl text-[#1f1d18]">
-                      {item}
+                  <FadeIn key={item} delay={i * 60}>
+                    <li className="group flex items-center justify-between py-3.5 cursor-default">
+                      <span className="text-[15px] text-[#1f1d18] group-hover:text-[#8b6f3b] group-hover:translate-x-1 transition-all duration-200">
+                        {item}
+                      </span>
+                      <span className="w-1 h-1 rounded-full bg-[#c9b99a] group-hover:bg-[#8b6f3b] transition-colors duration-200" />
                     </li>
                   </FadeIn>
                 ))}
               </ul>
             </div>
-            <div>
-              <FadeIn delay={100}>
-                <div className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-5">
-                  Familiar
+
+            {/* Familiar + Tools */}
+            <div className="space-y-10">
+              <div>
+                <FadeIn delay={100}>
+                  <p className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-6">Familiar</p>
+                </FadeIn>
+                <ul className="divide-y divide-[#e5ddd0]">
+                  {familiar.map((item, i) => (
+                    <FadeIn key={item} delay={100 + i * 60}>
+                      <li className="group flex items-center justify-between py-3.5 cursor-default">
+                        <span className="text-[15px] text-[#1f1d18] group-hover:text-[#8b6f3b] group-hover:translate-x-1 transition-all duration-200">
+                          {item}
+                        </span>
+                        <span className="w-1 h-1 rounded-full bg-[#c9b99a] group-hover:bg-[#8b6f3b] transition-colors duration-200" />
+                      </li>
+                    </FadeIn>
+                  ))}
+                </ul>
+              </div>
+
+              <FadeIn delay={200}>
+                <p className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-4">Tools & Software</p>
+                <div className="flex flex-wrap gap-2">
+                  {["MATLAB", "Python", "SolidWorks", "Git", "Next.js", "MS Office"].map((t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1.5 text-[12px] border border-[#d8ceb8] text-[#5a5346] hover:border-[#8b6f3b] hover:text-[#1f1d18] transition-all duration-200 cursor-default"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </FadeIn>
-              <ul className="space-y-2.5">
-                {familiar.map((item, i) => (
-                  <FadeIn key={item} delay={100 + i * 70}>
-                    <li className="text-lg sm:text-xl text-[#1f1d18]">
-                      {item}
-                    </li>
-                  </FadeIn>
-                ))}
-              </ul>
             </div>
-          </div>
-          <FadeIn delay={300} className="mt-12">
-            <div className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-5">
-              Tools & Software
-            </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-[14px] text-[#3e3a32]">
-              {["MATLAB", "Python", "SolidWorks", "Git", "Next.js", "Microsoft Office"].map(
-                (t, i, arr) => (
-                  <span key={t} className="flex items-center gap-6">
-                    {t}
-                    {i < arr.length - 1 && (
-                      <span className="text-[#c9bd9f]">·</span>
-                    )}
-                  </span>
-                )
-              )}
-            </div>
-          </FadeIn>
-        </Section>
 
-        <Divider />
+          </div>
+        </Section>
 
         {/* ── EXPERIENCE ── */}
         <Section id="experience" title="Experience">
-          <div className="space-y-10">
+          <div className="space-y-px">
             {[
               {
                 role: "Mathematics, Physics & Chemistry Tutor",
                 org: "Virginia Military Institute",
                 time: "Present",
-                desc: "Supporting cadets across core STEM coursework throughout the engineering curriculum.",
+                desc: "Supporting cadets with core STEM subjects across the engineering curriculum.",
               },
               {
                 role: "Library Assistant",
                 org: "Virginia Military Institute",
                 time: "Present",
-                desc: "Assisting with library operations and the management of academic resources.",
+                desc: "Assisting with library operations and academic resource management.",
               },
               {
                 role: "Student Assistant",
                 org: "University of Colorado Boulder",
                 time: "2022",
-                desc: "Provided academic and operational support within a university setting.",
+                desc: "Academic and operational support within a university setting.",
               },
             ].map((item, i) => (
-              <FadeIn key={item.role} delay={i * 120} from="left">
-                <Role {...item} />
+              <FadeIn key={item.role} delay={i * 100}>
+                <div className="group border border-transparent hover:border-[#ddd5c0] hover:bg-[#f0ebe0] p-5 -mx-5 transition-all duration-300 cursor-default">
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <span className="text-[10px] tracking-widest uppercase text-[#9d8e7a] mt-1 shrink-0 w-14 group-hover:text-[#8b6f3b] transition-colors duration-200">
+                      {item.time}
+                    </span>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl text-[#1f1d18] leading-snug">
+                        {item.role}
+                      </h3>
+                      <p className="text-[12px] text-[#9d8e7a] mt-0.5 italic">{item.org}</p>
+                      <p className="text-[13px] leading-relaxed text-[#5a5346] mt-2">{item.desc}</p>
+                    </div>
+                  </div>
+                </div>
               </FadeIn>
             ))}
           </div>
 
-          <FadeIn delay={200} className="mt-16">
-            <div className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-6">
-              Honors & Certifications
+          <FadeIn delay={150} className="mt-14">
+            <p className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-5">Honors & Certifications</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { title: "Institute Honors Scholar", sub: "Virginia Military Institute" },
+                { title: "Tau Beta Pi", sub: "Engineering Honor Society" },
+                { title: "Pi Tau Sigma", sub: "Mechanical Engineering Honor Society" },
+                { title: "Data Science Professional", sub: "Coursera · May 2023" },
+              ].map((c) => (
+                <div key={c.title} className="p-4 border border-[#e5ddd0] hover:border-[#c9b99a] hover:bg-[#f0ebe0] transition-all duration-200 cursor-default group">
+                  <p className="text-[14px] font-medium text-[#1f1d18] group-hover:text-[#4a4438] transition-colors">{c.title}</p>
+                  <p className="text-[11px] text-[#9d8e7a] mt-0.5">{c.sub}</p>
+                </div>
+              ))}
             </div>
-            <DetailList
-              rows={[
-                ["Institute Honors Scholar", "Virginia Military Institute"],
-                ["Tau Beta Pi", "Engineering Honor Society"],
-                ["Pi Tau Sigma", "Mechanical Engineering Honor Society"],
-                ["Data Science Professional", "Coursera, May 2023"],
-              ]}
-            />
           </FadeIn>
         </Section>
-
-        <Divider />
 
         {/* ── CONTACT ── */}
         <Section id="contact" title="Contact">
-          <FadeIn>
-            <p className="text-[15px] leading-relaxed text-[#3e3a32] max-w-xl mb-10">
-              Open to research opportunities, internships, and collaborations in
-              engineering and applied mathematics. Feel free to reach out.
-            </p>
-          </FadeIn>
-          <FadeIn delay={120}>
-            <div className="divide-y divide-[#c9bd9f]/70 border-y border-[#c9bd9f]/70">
-              <ContactRow
-                label="Email"
-                value="weerapongn27@vmi.edu"
-                href="mailto:weerapongn27@vmi.edu"
-              />
-              <ContactRow
-                label="LinkedIn"
-                value="linkedin.com/in/nattanan-weerapong-b900a0275"
-                href="https://linkedin.com/in/nattanan-weerapong-b900a0275"
-                external
-              />
-              <ContactRow
-                label="GitHub"
-                value="github.com/kafaak456-prog"
-                href="https://github.com/kafaak456-prog"
-                external
-              />
-              <ContactRow
-                label="Resume"
-                value="Download (PDF)"
-                href="/Nattanan_Weerapong_Resume.pdf"
-                download
-              />
-            </div>
-          </FadeIn>
+          <div className="max-w-lg">
+            <FadeIn>
+              <p className="text-[15px] leading-[1.85] text-[#5a5346] mb-10">
+                Open to internships, research roles, and engineering collaborations.
+                Feel free to reach out.
+              </p>
+            </FadeIn>
+            <FadeIn delay={100}>
+              <div className="space-y-px">
+                {[
+                  { label: "Email", value: "weerapongn27@vmi.edu", href: "mailto:weerapongn27@vmi.edu" },
+                  { label: "LinkedIn", value: "linkedin.com/in/nattanan-weerapong-b900a0275", href: "https://linkedin.com/in/nattanan-weerapong-b900a0275", external: true },
+                  { label: "GitHub", value: "github.com/kafaak456-prog", href: "https://github.com/kafaak456-prog", external: true },
+                  { label: "Resume", value: "Download PDF", href: "/Nattanan_Weerapong_Resume.pdf", download: true },
+                ].map((row) => (
+                  <a
+                    key={row.label}
+                    href={row.href}
+                    target={row.external ? "_blank" : undefined}
+                    rel={row.external ? "noopener noreferrer" : undefined}
+                    download={row.download}
+                    className="group flex items-center justify-between py-4 border-b border-[#e5ddd0] hover:border-[#c9b99a] transition-colors duration-200"
+                  >
+                    <span className="text-[11px] tracking-widest uppercase text-[#9d8e7a] group-hover:text-[#8b6f3b] transition-colors duration-200">
+                      {row.label}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-[13px] text-[#1f1d18] group-hover:text-[#8b6f3b] transition-colors duration-200">
+                      <span className="truncate max-w-[200px] sm:max-w-xs">{row.value}</span>
+                      <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 text-[#8b6f3b]">→</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
         </Section>
 
-        <footer className="py-16 mt-8 text-center">
-          <div className="italic text-[#8b6f3b] text-sm">
+        <footer className="py-14 text-center border-t border-[#e5ddd0]">
+          <p className="font-[family-name:var(--font-display)] italic text-[13px] text-[#9d8e7a]">
             Nattanan Weerapong · 2026
-          </div>
+          </p>
         </footer>
+
       </div>
     </main>
   );
@@ -412,22 +406,14 @@ export default function Home() {
 
 // ── Sub-components ──
 
-function NavLink({
-  label,
-  active,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) {
+function NavLink({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className={`px-3.5 py-1.5 text-[11px] tracking-[0.18em] uppercase transition-all duration-300 ease-out hover:-translate-y-px ${
+      className={`px-3.5 py-1.5 text-[11px] tracking-[0.16em] uppercase transition-all duration-250 ease-out hover:-translate-y-px ${
         active
-          ? "bg-[#1f1d18] text-[#f4ecd8]"
-          : "text-[#6b6557] hover:bg-[#8b6f3b]/12 hover:text-[#1f1d18]"
+          ? "bg-[#1f1d18] text-[#f7f3ec]"
+          : "text-[#6b6557] hover:bg-[#1f1d18]/8 hover:text-[#1f1d18]"
       }`}
     >
       {label}
@@ -435,142 +421,30 @@ function NavLink({
   );
 }
 
-function Divider() {
-  return <div className="h-px bg-[#c9bd9f]/70" />;
-}
-
-function Section({
-  id,
-  title,
-  children,
-}: {
-  id: SectionId;
-  title: string;
-  children: React.ReactNode;
-}) {
-  const lineRef = useRef<HTMLDivElement>(null);
-  const [lineVisible, setLineVisible] = useState(false);
+function Section({ id, title, children }: { id: SectionId; title: string; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [lineIn, setLineIn] = useState(false);
 
   useEffect(() => {
-    const el = lineRef.current;
+    const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setLineVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5 }
+      ([e]) => { if (e.isIntersecting) { setLineIn(true); observer.disconnect(); } },
+      { threshold: 0.4 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id={id} className="scroll-mt-32 py-20 sm:py-28">
-      <div ref={lineRef} className="mb-12 sm:mb-16 flex items-baseline gap-6">
-        <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl italic text-[#1f1d18] shrink-0">
+    <section id={id} className="scroll-mt-28 py-20 sm:py-24">
+      <div ref={ref} className="flex items-center gap-5 mb-12 sm:mb-14">
+        <h2 className="font-[family-name:var(--font-display)] italic text-4xl sm:text-5xl text-[#1f1d18] shrink-0">
           {title}
         </h2>
-        <div
-          className={`flex-1 h-px bg-[#c9bd9f]/60 origin-left transition-transform duration-700 ease-out delay-200 ${
-            lineVisible ? "scale-x-100" : "scale-x-0"
-          }`}
-        />
+        <div className={`flex-1 h-px bg-[#ddd5c0] origin-left transition-transform duration-700 ease-out delay-150 ${lineIn ? "scale-x-100" : "scale-x-0"}`} />
       </div>
       {children}
     </section>
-  );
-}
-
-function DetailLine({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-baseline gap-2">
-      <span className="text-[10px] tracking-[0.22em] uppercase text-[#8b6f3b]">
-        {label}
-      </span>
-      <span className="text-[#1f1d18]">{value}</span>
-    </div>
-  );
-}
-
-function DetailList({ rows }: { rows: Array<[string, string]> }) {
-  return (
-    <dl className="divide-y divide-[#c9bd9f]/60 border-y border-[#c9bd9f]/60">
-      {rows.map(([k, v]) => (
-        <div key={k} className="flex justify-between items-baseline gap-4 py-3.5 group">
-          <dt className="text-[11px] tracking-[0.2em] uppercase text-[#6b6557] transition-colors duration-200 group-hover:text-[#8b6f3b]">
-            {k}
-          </dt>
-          <dd className="text-[14px] text-[#1f1d18] text-right transition-colors duration-200 group-hover:text-[#3e3a32]">
-            {v}
-          </dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-function Role({
-  role,
-  org,
-  time,
-  desc,
-}: {
-  role: string;
-  org: string;
-  time: string;
-  desc: string;
-}) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8">
-      <div className="md:col-span-3 text-[11px] tracking-[0.2em] uppercase text-[#8b6f3b] pt-1">
-        {time}
-      </div>
-      <div className="md:col-span-9">
-        <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl text-[#1f1d18]">
-          {role}
-        </h3>
-        <div className="mt-1 text-[13px] italic text-[#6b6557]">{org}</div>
-        <p className="mt-3 text-[14px] leading-relaxed text-[#3e3a32] max-w-2xl">
-          {desc}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function ContactRow({
-  label,
-  value,
-  href,
-  external,
-  download,
-}: {
-  label: string;
-  value: string;
-  href: string;
-  external?: boolean;
-  download?: boolean;
-}) {
-  return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      download={download}
-      className="flex justify-between items-center gap-6 py-5 group"
-    >
-      <span className="text-[11px] tracking-[0.22em] uppercase text-[#6b6557] group-hover:text-[#8b6f3b] transition-colors duration-300">
-        {label}
-      </span>
-      <span className="flex items-center gap-2 text-[14px] sm:text-[15px] text-[#1f1d18] group-hover:text-[#8b6f3b] transition-all duration-300 break-all text-right">
-        {value}
-        <span className="inline-block translate-x-0 group-hover:translate-x-1.5 transition-transform duration-300 opacity-0 group-hover:opacity-100 text-[#8b6f3b]">
-          →
-        </span>
-      </span>
-    </a>
   );
 }
