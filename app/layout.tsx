@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nattanan Weerapong — Mechanical Engineering",
+  title: "Portfolio",
   description: "Cadet at Virginia Military Institute. B.S. Mechanical Engineering, concentrations in Nuclear and Aerospace Engineering.",
   icons: {
     icon: "/icon.svg",
