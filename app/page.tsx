@@ -58,23 +58,23 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#060d1a] text-white font-mono selection:bg-blue-500/50 overflow-x-hidden">
+    <main className="min-h-screen bg-[#0f1729] text-zinc-200 font-mono selection:bg-blue-400/30 overflow-x-hidden">
 
       {/* Animated Grid Background */}
       <div
-        className="fixed inset-0 z-0 opacity-15"
+        className="fixed inset-0 z-0 opacity-[0.08]"
         style={{
-          backgroundImage: `linear-gradient(#0c1a3a 1px, transparent 1px), linear-gradient(90deg, #0c1a3a 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#1e2a45 1px, transparent 1px), linear-gradient(90deg, #1e2a45 1px, transparent 1px)`,
           backgroundSize: '40px 40px'
         }}
       />
 
       {/* Blue ambient glow */}
       <div className="fixed inset-0 z-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(96,165,250,0.07) 0%, transparent 70%)' }} />
 
       {/* NAV */}
-      <nav className="sticky top-0 z-20 p-6 flex justify-between items-center max-w-7xl mx-auto border-b border-blue-900/50 backdrop-blur-md bg-[#060d1a]/70">
+      <nav className="sticky top-0 z-20 p-6 flex justify-between items-center max-w-7xl mx-auto border-b border-blue-900/40 backdrop-blur-md bg-[#0f1729]/80">
         <button onClick={() => scrollTo("home")} className="group cursor-pointer text-left">
           <span className="text-blue-400 font-black tracking-tighter text-2xl group-hover:hidden">NW</span>
           <span className="hidden group-hover:inline text-blue-300 font-black tracking-tighter text-2xl">NATTANAN_WEERAPONG</span>
@@ -101,7 +101,7 @@ export default function Home() {
       </nav>
 
       {/* Mobile nav */}
-      <div className="sticky top-[88px] z-20 md:hidden flex gap-1 px-6 pt-3 pb-2 overflow-x-auto bg-[#060d1a]/70 backdrop-blur-md border-b border-blue-900/30">
+      <div className="sticky top-[88px] z-20 md:hidden flex gap-1 px-6 pt-3 pb-2 overflow-x-auto bg-[#0f1729]/80 backdrop-blur-md border-b border-blue-900/30">
         {SECTIONS.map((s) => (
           <button
             key={s}
@@ -161,7 +161,7 @@ export default function Home() {
                 <a
                   href="/Nattanan_Weerapong_Resume.pdf"
                   download="Nattanan_Weerapong_Resume.pdf"
-                  className="relative px-8 sm:px-10 py-4 bg-blue-700 hover:bg-blue-500 text-white font-bold uppercase transition-all hover:shadow-[0_0_30px_#3b82f6] active:scale-95 text-center text-sm sm:text-base"
+                  className="relative px-8 sm:px-10 py-4 bg-blue-600/90 hover:bg-blue-500/90 text-zinc-50 font-bold uppercase transition-all hover:shadow-[0_0_24px_rgba(96,165,250,0.35)] active:scale-95 text-center text-sm sm:text-base"
                 >
                   Download Resume.pdf
                 </a>
