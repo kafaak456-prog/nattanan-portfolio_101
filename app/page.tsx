@@ -68,20 +68,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id as SectionId);
-      },
-      { rootMargin: "-40% 0px -40% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
-    );
-    SECTIONS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const onScroll = () => {
+      const y = window.scrollY + 160; // offset: sticky nav height + buffer
+      let active: SectionId = "home";
+      for (const id of SECTIONS) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) active = id;
+      }
+      setActiveSection(active);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // set correct state on mount
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollTo = (id: SectionId) => {
