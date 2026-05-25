@@ -108,7 +108,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 sm:px-10 py-5 flex justify-between items-center">
           <button
             onClick={() => scrollTo("home")}
-            className="font-semibold text-lg sm:text-xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
+            className="font-[family-name:var(--font-display)] italic text-xl sm:text-2xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
           >
             Nattanan Weerapong
           </button>
@@ -153,12 +153,12 @@ export default function Home() {
                 Virginia Military Institute · Cadet
               </div>
               <h1
-                className={`font-bold text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                className={`font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-8xl leading-[1.0] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 style={{ transitionDelay: "120ms" }}
               >
                 Nattanan
                 <br />
-                <span className="font-light">Weerapong</span>
+                <span className="italic font-normal">Weerapong</span>
               </h1>
               <p
                 className={`mt-8 text-[15px] sm:text-base leading-relaxed text-[#3e3a32] max-w-xl transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
@@ -424,17 +424,13 @@ function NavLink({
   return (
     <button
       onClick={onClick}
-      className={`relative pb-0.5 transition-colors duration-300 group ${
-        active ? "text-[#8b6f3b]" : "text-[#6b6557] hover:text-[#1f1d18]"
+      className={`px-3.5 py-1.5 text-[11px] tracking-[0.18em] uppercase transition-all duration-300 ease-out hover:-translate-y-px ${
+        active
+          ? "bg-[#1f1d18] text-[#f4ecd8]"
+          : "text-[#6b6557] hover:bg-[#8b6f3b]/12 hover:text-[#1f1d18]"
       }`}
     >
       {label}
-      {/* Animated underline */}
-      <span
-        className={`absolute bottom-0 left-0 h-px bg-[#8b6f3b] transition-all duration-300 ease-out ${
-          active ? "w-full" : "w-0 group-hover:w-full"
-        }`}
-      />
     </button>
   );
 }
@@ -474,7 +470,7 @@ function Section({
   return (
     <section id={id} className="scroll-mt-32 py-20 sm:py-28">
       <div ref={lineRef} className="mb-12 sm:mb-16 flex items-baseline gap-6">
-        <h2 className="font-semibold text-3xl sm:text-4xl text-[#1f1d18] shrink-0">
+        <h2 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl italic text-[#1f1d18] shrink-0">
           {title}
         </h2>
         <div
@@ -533,7 +529,7 @@ function Role({
         {time}
       </div>
       <div className="md:col-span-9">
-        <h3 className="font-semibold text-xl sm:text-2xl text-[#1f1d18]">
+        <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl text-[#1f1d18]">
           {role}
         </h3>
         <div className="mt-1 text-[13px] italic text-[#6b6557]">{org}</div>

@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { EB_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+
+const garamond = EB_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
+});
 
 const inter = Inter({
   variable: "--font-sans",
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${garamond.variable} ${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
