@@ -173,7 +173,8 @@ export default function Home() {
                 className={`mt-10 flex flex-wrap gap-x-8 gap-y-2 text-[13px] text-[#6b6557] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 style={{ transitionDelay: "340ms" }}
               >
-                <DetailLine label="GPA" value="3.99" />
+                <DetailLine label="Cumulative GPA" value="3.99" />
+                <DetailLine label="Major GPA" value="4.00" />
                 <DetailLine label="Honors" value="Institute Honors Scholar" />
                 <DetailLine label="Languages" value="Thai · English" />
               </div>
