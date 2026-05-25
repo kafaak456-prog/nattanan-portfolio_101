@@ -8,7 +8,7 @@ Personal portfolio website built with Next.js and Tailwind CSS.
 
 ## About
 
-Portfolio site for Nattanan Weerapong, a Mechanical Engineering student at Virginia Military Institute (VMI). Showcases academic background, skills, experience, and contact information.
+My portfolio showcases academic background, skills, experience, and contact information.
 
 ## Tech Stack
 
