@@ -8,7 +8,7 @@ type SectionId = typeof SECTIONS[number];
 const SECTION_LABELS: Record<SectionId, string> = {
   home: "Home",
   about: "About",
-  studies: "Studies",
+  studies: "Skills",
   experience: "Experience",
   contact: "Contact",
 };
@@ -108,7 +108,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-6 sm:px-10 py-5 flex justify-between items-center">
           <button
             onClick={() => scrollTo("home")}
-            className="font-[family-name:var(--font-display)] italic text-lg sm:text-xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
+            className="font-semibold text-lg sm:text-xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
           >
             Nattanan Weerapong
           </button>
@@ -153,21 +153,21 @@ export default function Home() {
                 Virginia Military Institute · Cadet
               </div>
               <h1
-                className={`font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                className={`font-bold text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 style={{ transitionDelay: "120ms" }}
               >
                 Nattanan
                 <br />
-                <span className="italic font-normal">Weerapong</span>
+                <span className="font-light">Weerapong</span>
               </h1>
               <p
                 className={`mt-8 text-[15px] sm:text-base leading-relaxed text-[#3e3a32] max-w-xl transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 style={{ transitionDelay: "240ms" }}
               >
-                International student from Thailand pursuing a Bachelor of Science in
-                Mechanical Engineering, with concentrations in nuclear and aerospace
-                systems. Interested in applying mathematics and artificial intelligence
-                to engineering problems of consequence.
+                International student from Thailand pursuing a B.S. in Mechanical
+                Engineering at Virginia Military Institute, with concentrations in
+                nuclear and aerospace engineering. Focused on using math and AI
+                to solve real engineering problems.
               </p>
               <div
                 className={`mt-10 flex flex-wrap gap-x-8 gap-y-2 text-[13px] text-[#6b6557] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
@@ -186,13 +186,13 @@ export default function Home() {
                   download="Nattanan_Weerapong_Resume.pdf"
                   className="px-7 py-3 bg-[#1f1d18] text-[#f4ecd8] text-[11px] tracking-[0.22em] uppercase hover:bg-[#8b6f3b] active:scale-[0.97] transition-all duration-300"
                 >
-                  Curriculum Vitae
+                  Download Resume
                 </a>
                 <button
                   onClick={() => scrollTo("contact")}
                   className="px-7 py-3 border border-[#1f1d18] text-[#1f1d18] text-[11px] tracking-[0.22em] uppercase hover:bg-[#1f1d18] hover:text-[#f4ecd8] active:scale-[0.97] transition-all duration-300"
                 >
-                  Correspondence
+                  Contact
                 </button>
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function Home() {
                   Outside of coursework, I serve as a tutor in mathematics, physics, and
                   chemistry, and assist in the Institute library. I am drawn to research
                   opportunities and collaborations that ask careful questions of
-                  consequential systems.
+                  real-world engineering problems.
                 </p>
               </div>
             </FadeIn>
@@ -261,7 +261,7 @@ export default function Home() {
         <Divider />
 
         {/* ── STUDIES ── */}
-        <Section id="studies" title="Studies">
+        <Section id="studies" title="Skills">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
             <div>
               <FadeIn>
@@ -272,7 +272,7 @@ export default function Home() {
               <ul className="space-y-2.5">
                 {proficient.map((item, i) => (
                   <FadeIn key={item} delay={i * 70}>
-                    <li className="font-[family-name:var(--font-display)] text-lg sm:text-xl text-[#1f1d18]">
+                    <li className="text-lg sm:text-xl text-[#1f1d18]">
                       {item}
                     </li>
                   </FadeIn>
@@ -288,7 +288,7 @@ export default function Home() {
               <ul className="space-y-2.5">
                 {familiar.map((item, i) => (
                   <FadeIn key={item} delay={100 + i * 70}>
-                    <li className="font-[family-name:var(--font-display)] text-lg sm:text-xl text-[#1f1d18]">
+                    <li className="text-lg sm:text-xl text-[#1f1d18]">
                       {item}
                     </li>
                   </FadeIn>
@@ -298,7 +298,7 @@ export default function Home() {
           </div>
           <FadeIn delay={300} className="mt-12">
             <div className="text-[10px] tracking-[0.28em] uppercase text-[#8b6f3b] mb-5">
-              Instruments
+              Tools & Software
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-[14px] text-[#3e3a32]">
               {["MATLAB", "Python", "SolidWorks", "Git", "Next.js", "Microsoft Office"].map(
@@ -368,13 +368,13 @@ export default function Home() {
           <FadeIn>
             <p className="text-[15px] leading-relaxed text-[#3e3a32] max-w-xl mb-10">
               Open to research opportunities, internships, and collaborations in
-              engineering and applied mathematics. Correspondence welcomed.
+              engineering and applied mathematics. Feel free to reach out.
             </p>
           </FadeIn>
           <FadeIn delay={120}>
             <div className="divide-y divide-[#c9bd9f]/70 border-y border-[#c9bd9f]/70">
               <ContactRow
-                label="Electronic Mail"
+                label="Email"
                 value="weerapongn27@vmi.edu"
                 href="mailto:weerapongn27@vmi.edu"
               />
@@ -391,7 +391,7 @@ export default function Home() {
                 external
               />
               <ContactRow
-                label="Curriculum Vitae"
+                label="Resume"
                 value="Download (PDF)"
                 href="/Nattanan_Weerapong_Resume.pdf"
                 download
@@ -401,8 +401,8 @@ export default function Home() {
         </Section>
 
         <footer className="py-16 mt-8 text-center">
-          <div className="font-[family-name:var(--font-display)] italic text-[#8b6f3b] text-sm">
-            Nattanan Weerapong · MMXXVI
+          <div className="italic text-[#8b6f3b] text-sm">
+            Nattanan Weerapong · 2026
           </div>
         </footer>
       </div>
@@ -474,7 +474,7 @@ function Section({
   return (
     <section id={id} className="scroll-mt-32 py-20 sm:py-28">
       <div ref={lineRef} className="mb-12 sm:mb-16 flex items-baseline gap-6">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl italic text-[#1f1d18] shrink-0">
+        <h2 className="font-semibold text-3xl sm:text-4xl text-[#1f1d18] shrink-0">
           {title}
         </h2>
         <div
@@ -533,7 +533,7 @@ function Role({
         {time}
       </div>
       <div className="md:col-span-9">
-        <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl text-[#1f1d18]">
+        <h3 className="font-semibold text-xl sm:text-2xl text-[#1f1d18]">
           {role}
         </h3>
         <div className="mt-1 text-[13px] italic text-[#6b6557]">{org}</div>
