@@ -129,13 +129,14 @@ export default function Home() {
                 </div>
 
                 {/* Photo */}
-                <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 mb-8 border border-zinc-800 p-2 group hover:border-blue-500/50 transition-colors">
+                <div className="relative w-56 sm:w-64 md:w-72 aspect-[3/4] mb-8 border border-zinc-800 p-2 group hover:border-blue-500/50 transition-colors">
                   <div className="w-full h-full relative overflow-hidden bg-zinc-950">
                     <Image
-                      src="/Nattanan_Weerapong_Profile.jpg"
-                      alt="Nattanan Weerapong Profile"
+                      src="/Profile.PNG"
+                      alt="Nattanan Weerapong, VMI Cadet"
                       fill
-                      className="object-cover transition-all duration-700 ease-in-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, 288px"
+                      className="object-cover object-top transition-all duration-700 ease-in-out group-hover:scale-105"
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
