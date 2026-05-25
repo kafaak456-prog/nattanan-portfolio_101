@@ -18,6 +18,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Nattanan Weerapong — Mechanical Engineering",
   description: "Cadet at Virginia Military Institute. B.S. Mechanical Engineering, concentrations in Nuclear and Aerospace Engineering.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
