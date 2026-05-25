@@ -108,7 +108,7 @@ export default function Home() {
             onClick={() => scrollTo("home")}
             className="font-[family-name:var(--font-display)] italic text-xl sm:text-2xl text-[#1f1d18] hover:text-[#8b6f3b] transition-colors duration-300"
           >
-            Nattanan Weerapong
+            NW · Portfolio
           </button>
           <div className="hidden md:flex gap-7 text-[11px] tracking-[0.18em] uppercase">
             {SECTIONS.map((s) => (
