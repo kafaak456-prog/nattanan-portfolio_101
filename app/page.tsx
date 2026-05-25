@@ -153,12 +153,12 @@ export default function Home() {
                 Virginia Military Institute · Cadet
               </div>
               <h1
-                className={`font-[family-name:var(--font-display)] text-6xl sm:text-7xl md:text-8xl leading-[1.0] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                className={`font-[family-name:var(--font-display)] font-bold text-6xl sm:text-7xl md:text-8xl leading-[1.0] tracking-tight text-[#1f1d18] transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                 style={{ transitionDelay: "120ms" }}
               >
                 Nattanan
                 <br />
-                <span className="italic font-normal">Weerapong</span>
+                <span className="italic">Weerapong</span>
               </h1>
               <p
                 className={`mt-8 text-[15px] sm:text-base leading-relaxed text-[#5a5346] max-w-xl transition-all duration-700 ease-out ${heroIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
